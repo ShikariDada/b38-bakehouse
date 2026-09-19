@@ -20,7 +20,17 @@ const name = sh(`gh codespace create -r ShikariDada/b38-bakehouse -b main -m bas
 console.log("codespace:", name);
 if (name.startsWith("ERR:")) process.exit(1);
 
-// create resolves after post-create completes (install + seed + build)
+// create resolves immediately; post-create (install + seed + build) runs async.
+// Poll until the .next build exists, then start the server.
+console.log("waiting for post-create (install + seed + build)…");
+let built = false;
+for (let i = 0; i < 60 && !built; i++) {
+  await new Promise(r => setTimeout(r, 20000));
+  const probe = sh(`gh codespace ssh -c "${name}" -- "test -d /workspaces/b38-bakehouse/.next && echo READY"`);
+  if (probe.includes("READY")) built = true;
+  else console.log("build pending…", probe.slice(0, 120));
+}
+if (!built) { console.log("BUILD_TIMEOUT"); process.exit(1); }
 console.log("post-create done; starting server");
 const start = sh(`gh codespace ssh -c "${name}" -- "cd /workspaces/b38-bakehouse && (nohup npx next start -p 3000 > server.log 2>&1 &) && sleep 6 && curl -s -o /dev/null -w %{http_code} http://localhost:3000/"`);
 console.log("server check:", start);
