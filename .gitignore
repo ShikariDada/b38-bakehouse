@@ -17,3 +17,4 @@
 *.log
 .e2e-last-order
 .env*
+test-results/
