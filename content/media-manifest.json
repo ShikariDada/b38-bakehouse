@@ -1,0 +1,505 @@
+{
+  "generatedAt": "2026-09-19T22:20:52.126Z",
+  "designs": {
+    "cocoa-drip-crown": {
+      "number": "01",
+      "images": [
+        {
+          "photo": "photo-01",
+          "sha256_16": "d0d807b1fe45bbd1",
+          "width": 1200,
+          "height": 1600,
+          "role": "hero",
+          "card": "/media/designs/cocoa-drip-crown/photo-01-card.webp",
+          "cardAvif": "/media/designs/cocoa-drip-crown/photo-01-card.avif",
+          "full": "/media/designs/cocoa-drip-crown/photo-01-full.webp",
+          "fullAvif": "/media/designs/cocoa-drip-crown/photo-01-full.avif",
+          "cardSm": "/media/designs/cocoa-drip-crown/photo-01-card-sm.webp"
+        }
+      ]
+    },
+    "blue-hour-milestone": {
+      "number": "02",
+      "images": [
+        {
+          "photo": "photo-02",
+          "sha256_16": "485a946dd5b594f0",
+          "width": 681,
+          "height": 1280,
+          "role": "hero",
+          "card": "/media/designs/blue-hour-milestone/photo-02-card.webp",
+          "cardAvif": "/media/designs/blue-hour-milestone/photo-02-card.avif",
+          "full": "/media/designs/blue-hour-milestone/photo-02-full.webp",
+          "fullAvif": "/media/designs/blue-hour-milestone/photo-02-full.avif",
+          "cardSm": "/media/designs/blue-hour-milestone/photo-02-card-sm.webp"
+        }
+      ]
+    },
+    "blue-blossom-wreath": {
+      "number": "03",
+      "images": [
+        {
+          "photo": "photo-03",
+          "sha256_16": "83cc7510ced8a031",
+          "width": 1200,
+          "height": 1600,
+          "role": "hero",
+          "card": "/media/designs/blue-blossom-wreath/photo-03-card.webp",
+          "cardAvif": "/media/designs/blue-blossom-wreath/photo-03-card.avif",
+          "full": "/media/designs/blue-blossom-wreath/photo-03-full.webp",
+          "fullAvif": "/media/designs/blue-blossom-wreath/photo-03-full.avif",
+          "cardSm": "/media/designs/blue-blossom-wreath/photo-03-card-sm.webp"
+        }
+      ]
+    },
+    "black-forest-classic": {
+      "number": "04",
+      "images": [
+        {
+          "photo": "photo-04",
+          "sha256_16": "708ac83ead68b819",
+          "width": 1200,
+          "height": 1600,
+          "role": "hero",
+          "card": "/media/designs/black-forest-classic/photo-04-card.webp",
+          "cardAvif": "/media/designs/black-forest-classic/photo-04-card.avif",
+          "full": "/media/designs/black-forest-classic/photo-04-full.webp",
+          "fullAvif": "/media/designs/black-forest-classic/photo-04-full.avif",
+          "cardSm": "/media/designs/black-forest-classic/photo-04-card-sm.webp"
+        },
+        {
+          "photo": "photo-11",
+          "sha256_16": "3b8e154cd8540582",
+          "width": 1200,
+          "height": 1600,
+          "role": "gallery",
+          "card": "/media/designs/black-forest-classic/photo-11-card.webp",
+          "cardAvif": null,
+          "full": "/media/designs/black-forest-classic/photo-11-full.webp",
+          "fullAvif": null,
+          "cardSm": "/media/designs/black-forest-classic/photo-11-card-sm.webp"
+        }
+      ]
+    },
+    "powder-blue-rosette": {
+      "number": "05",
+      "images": [
+        {
+          "photo": "photo-05",
+          "sha256_16": "7d1af3216d26fe64",
+          "width": 1346,
+          "height": 1600,
+          "role": "hero",
+          "card": "/media/designs/powder-blue-rosette/photo-05-card.webp",
+          "cardAvif": "/media/designs/powder-blue-rosette/photo-05-card.avif",
+          "full": "/media/designs/powder-blue-rosette/photo-05-full.webp",
+          "fullAvif": "/media/designs/powder-blue-rosette/photo-05-full.avif",
+          "cardSm": "/media/designs/powder-blue-rosette/photo-05-card-sm.webp"
+        }
+      ]
+    },
+    "sapphire-shell-ring": {
+      "number": "06",
+      "images": [
+        {
+          "photo": "photo-06",
+          "sha256_16": "d9fe09efd5ef7a37",
+          "width": 681,
+          "height": 1280,
+          "role": "hero",
+          "card": "/media/designs/sapphire-shell-ring/photo-06-card.webp",
+          "cardAvif": "/media/designs/sapphire-shell-ring/photo-06-card.avif",
+          "full": "/media/designs/sapphire-shell-ring/photo-06-full.webp",
+          "fullAvif": "/media/designs/sapphire-shell-ring/photo-06-full.avif",
+          "cardSm": "/media/designs/sapphire-shell-ring/photo-06-card-sm.webp"
+        }
+      ]
+    },
+    "vintage-rose-fringe": {
+      "number": "07",
+      "images": [
+        {
+          "photo": "photo-07",
+          "sha256_16": "fa36364cc8d81956",
+          "width": 1346,
+          "height": 1600,
+          "role": "hero",
+          "card": "/media/designs/vintage-rose-fringe/photo-07-card.webp",
+          "cardAvif": "/media/designs/vintage-rose-fringe/photo-07-card.avif",
+          "full": "/media/designs/vintage-rose-fringe/photo-07-full.webp",
+          "fullAvif": "/media/designs/vintage-rose-fringe/photo-07-full.avif",
+          "cardSm": "/media/designs/vintage-rose-fringe/photo-07-card-sm.webp"
+        }
+      ]
+    },
+    "lavender-daisy-field": {
+      "number": "08",
+      "images": [
+        {
+          "photo": "photo-08",
+          "sha256_16": "85ddc6344ed28ed1",
+          "width": 899,
+          "height": 1599,
+          "role": "hero",
+          "card": "/media/designs/lavender-daisy-field/photo-08-card.webp",
+          "cardAvif": "/media/designs/lavender-daisy-field/photo-08-card.avif",
+          "full": "/media/designs/lavender-daisy-field/photo-08-full.webp",
+          "fullAvif": "/media/designs/lavender-daisy-field/photo-08-full.avif",
+          "cardSm": "/media/designs/lavender-daisy-field/photo-08-card-sm.webp"
+        }
+      ]
+    },
+    "midnight-oreo-gold": {
+      "number": "09",
+      "images": [
+        {
+          "photo": "photo-09",
+          "sha256_16": "a9ceb83074239fb6",
+          "width": 1200,
+          "height": 1600,
+          "role": "hero",
+          "card": "/media/designs/midnight-oreo-gold/photo-09-card.webp",
+          "cardAvif": "/media/designs/midnight-oreo-gold/photo-09-card.avif",
+          "full": "/media/designs/midnight-oreo-gold/photo-09-full.webp",
+          "fullAvif": "/media/designs/midnight-oreo-gold/photo-09-full.avif",
+          "cardSm": "/media/designs/midnight-oreo-gold/photo-09-card-sm.webp"
+        }
+      ]
+    },
+    "midnight-truffle-nuts": {
+      "number": "10",
+      "images": [
+        {
+          "photo": "photo-10",
+          "sha256_16": "074ceaca9424fbfc",
+          "width": 1200,
+          "height": 1600,
+          "role": "hero",
+          "card": "/media/designs/midnight-truffle-nuts/photo-10-card.webp",
+          "cardAvif": "/media/designs/midnight-truffle-nuts/photo-10-card.avif",
+          "full": "/media/designs/midnight-truffle-nuts/photo-10-full.webp",
+          "fullAvif": "/media/designs/midnight-truffle-nuts/photo-10-full.avif",
+          "cardSm": "/media/designs/midnight-truffle-nuts/photo-10-card-sm.webp"
+        }
+      ]
+    },
+    "cream-oreo-name-cake": {
+      "number": "11",
+      "images": [
+        {
+          "photo": "photo-12",
+          "sha256_16": "dd4a81afa957d12d",
+          "width": 1094,
+          "height": 1600,
+          "role": "hero",
+          "card": "/media/designs/cream-oreo-name-cake/photo-12-card.webp",
+          "cardAvif": "/media/designs/cream-oreo-name-cake/photo-12-card.avif",
+          "full": "/media/designs/cream-oreo-name-cake/photo-12-full.webp",
+          "fullAvif": "/media/designs/cream-oreo-name-cake/photo-12-full.avif",
+          "cardSm": "/media/designs/cream-oreo-name-cake/photo-12-card-sm.webp"
+        }
+      ]
+    },
+    "mint-daisy-ribbons": {
+      "number": "12",
+      "images": [
+        {
+          "photo": "photo-13",
+          "sha256_16": "b8b186b4259f2839",
+          "width": 899,
+          "height": 1599,
+          "role": "hero",
+          "card": "/media/designs/mint-daisy-ribbons/photo-13-card.webp",
+          "cardAvif": "/media/designs/mint-daisy-ribbons/photo-13-card.avif",
+          "full": "/media/designs/mint-daisy-ribbons/photo-13-full.webp",
+          "fullAvif": "/media/designs/mint-daisy-ribbons/photo-13-full.avif",
+          "cardSm": "/media/designs/mint-daisy-ribbons/photo-13-card-sm.webp"
+        }
+      ]
+    },
+    "blue-rosette-garden": {
+      "number": "13",
+      "images": [
+        {
+          "photo": "photo-14",
+          "sha256_16": "a01f858e1b436899",
+          "width": 899,
+          "height": 1599,
+          "role": "hero",
+          "card": "/media/designs/blue-rosette-garden/photo-14-card.webp",
+          "cardAvif": "/media/designs/blue-rosette-garden/photo-14-card.avif",
+          "full": "/media/designs/blue-rosette-garden/photo-14-full.webp",
+          "fullAvif": "/media/designs/blue-rosette-garden/photo-14-full.avif",
+          "cardSm": "/media/designs/blue-rosette-garden/photo-14-card-sm.webp"
+        }
+      ]
+    },
+    "pastel-rose-wreath": {
+      "number": "14",
+      "images": [
+        {
+          "photo": "photo-15",
+          "sha256_16": "fbc4005951d90c99",
+          "width": 1200,
+          "height": 1600,
+          "role": "hero",
+          "card": "/media/designs/pastel-rose-wreath/photo-15-card.webp",
+          "cardAvif": "/media/designs/pastel-rose-wreath/photo-15-card.avif",
+          "full": "/media/designs/pastel-rose-wreath/photo-15-full.webp",
+          "fullAvif": "/media/designs/pastel-rose-wreath/photo-15-full.avif",
+          "cardSm": "/media/designs/pastel-rose-wreath/photo-15-card-sm.webp"
+        }
+      ]
+    },
+    "blush-ruffle-medallion": {
+      "number": "15",
+      "images": [
+        {
+          "photo": "photo-16",
+          "sha256_16": "102d8af14c4be8a2",
+          "width": 898,
+          "height": 1600,
+          "role": "hero",
+          "card": "/media/designs/blush-ruffle-medallion/photo-16-card.webp",
+          "cardAvif": "/media/designs/blush-ruffle-medallion/photo-16-card.avif",
+          "full": "/media/designs/blush-ruffle-medallion/photo-16-full.webp",
+          "fullAvif": "/media/designs/blush-ruffle-medallion/photo-16-full.avif",
+          "cardSm": "/media/designs/blush-ruffle-medallion/photo-16-card-sm.webp"
+        }
+      ]
+    },
+    "rainbow-rosette-crown": {
+      "number": "16",
+      "images": [
+        {
+          "photo": "photo-17",
+          "sha256_16": "8feb566928090874",
+          "width": 1200,
+          "height": 1600,
+          "role": "hero",
+          "card": "/media/designs/rainbow-rosette-crown/photo-17-card.webp",
+          "cardAvif": "/media/designs/rainbow-rosette-crown/photo-17-card.avif",
+          "full": "/media/designs/rainbow-rosette-crown/photo-17-full.webp",
+          "fullAvif": "/media/designs/rainbow-rosette-crown/photo-17-full.avif",
+          "cardSm": "/media/designs/rainbow-rosette-crown/photo-17-card-sm.webp"
+        }
+      ]
+    },
+    "oreo-overload-drip": {
+      "number": "17",
+      "images": [
+        {
+          "photo": "photo-18",
+          "sha256_16": "f197ad1a55a4c113",
+          "width": 1205,
+          "height": 1600,
+          "role": "hero",
+          "card": "/media/designs/oreo-overload-drip/photo-18-card.webp",
+          "cardAvif": "/media/designs/oreo-overload-drip/photo-18-card.avif",
+          "full": "/media/designs/oreo-overload-drip/photo-18-full.webp",
+          "fullAvif": "/media/designs/oreo-overload-drip/photo-18-full.avif",
+          "cardSm": "/media/designs/oreo-overload-drip/photo-18-card-sm.webp"
+        }
+      ]
+    },
+    "orchard-fruit-cream": {
+      "number": "18",
+      "images": [
+        {
+          "photo": "photo-20",
+          "sha256_16": "9e41d3a9b0f3ba38",
+          "width": 720,
+          "height": 1280,
+          "role": "hero",
+          "card": "/media/designs/orchard-fruit-cream/photo-20-card.webp",
+          "cardAvif": "/media/designs/orchard-fruit-cream/photo-20-card.avif",
+          "full": "/media/designs/orchard-fruit-cream/photo-20-full.webp",
+          "fullAvif": "/media/designs/orchard-fruit-cream/photo-20-full.avif",
+          "cardSm": "/media/designs/orchard-fruit-cream/photo-20-card-sm.webp"
+        },
+        {
+          "photo": "photo-19",
+          "sha256_16": "cf89eb81dcf02699",
+          "width": 2340,
+          "height": 4160,
+          "role": "gallery",
+          "card": "/media/designs/orchard-fruit-cream/photo-19-card.webp",
+          "cardAvif": null,
+          "full": "/media/designs/orchard-fruit-cream/photo-19-full.webp",
+          "fullAvif": null,
+          "cardSm": "/media/designs/orchard-fruit-cream/photo-19-card-sm.webp"
+        }
+      ]
+    },
+    "lavender-ombre-pearls": {
+      "number": "19",
+      "images": [
+        {
+          "photo": "photo-22",
+          "sha256_16": "90775c786882d84d",
+          "width": 3000,
+          "height": 4000,
+          "role": "hero",
+          "card": "/media/designs/lavender-ombre-pearls/photo-22-card.webp",
+          "cardAvif": "/media/designs/lavender-ombre-pearls/photo-22-card.avif",
+          "full": "/media/designs/lavender-ombre-pearls/photo-22-full.webp",
+          "fullAvif": "/media/designs/lavender-ombre-pearls/photo-22-full.avif",
+          "cardSm": "/media/designs/lavender-ombre-pearls/photo-22-card-sm.webp"
+        },
+        {
+          "photo": "photo-25",
+          "sha256_16": "dc63d5f6e1b82592",
+          "width": 3000,
+          "height": 4000,
+          "role": "gallery",
+          "card": "/media/designs/lavender-ombre-pearls/photo-25-card.webp",
+          "cardAvif": null,
+          "full": "/media/designs/lavender-ombre-pearls/photo-25-full.webp",
+          "fullAvif": null,
+          "cardSm": "/media/designs/lavender-ombre-pearls/photo-25-card-sm.webp"
+        },
+        {
+          "photo": "photo-24",
+          "sha256_16": "85b35ae3fe133b6b",
+          "width": 3000,
+          "height": 4000,
+          "role": "gallery",
+          "card": "/media/designs/lavender-ombre-pearls/photo-24-card.webp",
+          "cardAvif": null,
+          "full": "/media/designs/lavender-ombre-pearls/photo-24-full.webp",
+          "fullAvif": null,
+          "cardSm": "/media/designs/lavender-ombre-pearls/photo-24-card-sm.webp"
+        },
+        {
+          "photo": "photo-21",
+          "sha256_16": "21fd4a5bc62769b0",
+          "width": 3000,
+          "height": 4000,
+          "role": "gallery",
+          "card": "/media/designs/lavender-ombre-pearls/photo-21-card.webp",
+          "cardAvif": null,
+          "full": "/media/designs/lavender-ombre-pearls/photo-21-full.webp",
+          "fullAvif": null,
+          "cardSm": "/media/designs/lavender-ombre-pearls/photo-21-card-sm.webp"
+        },
+        {
+          "photo": "photo-23",
+          "sha256_16": "d2bed7cc72d8105e",
+          "width": 3000,
+          "height": 4000,
+          "role": "gallery",
+          "card": "/media/designs/lavender-ombre-pearls/photo-23-card.webp",
+          "cardAvif": null,
+          "full": "/media/designs/lavender-ombre-pearls/photo-23-full.webp",
+          "fullAvif": null,
+          "cardSm": "/media/designs/lavender-ombre-pearls/photo-23-card-sm.webp"
+        }
+      ]
+    },
+    "groom-stop-ceremony": {
+      "number": "20",
+      "images": [
+        {
+          "photo": "photo-28",
+          "sha256_16": "0fa74a17a5041b6c",
+          "width": 3000,
+          "height": 4000,
+          "role": "hero",
+          "card": "/media/designs/groom-stop-ceremony/photo-28-card.webp",
+          "cardAvif": "/media/designs/groom-stop-ceremony/photo-28-card.avif",
+          "full": "/media/designs/groom-stop-ceremony/photo-28-full.webp",
+          "fullAvif": "/media/designs/groom-stop-ceremony/photo-28-full.avif",
+          "cardSm": "/media/designs/groom-stop-ceremony/photo-28-card-sm.webp"
+        },
+        {
+          "photo": "photo-27",
+          "sha256_16": "54a396431dcb33ac",
+          "width": 3000,
+          "height": 4000,
+          "role": "gallery",
+          "card": "/media/designs/groom-stop-ceremony/photo-27-card.webp",
+          "cardAvif": null,
+          "full": "/media/designs/groom-stop-ceremony/photo-27-full.webp",
+          "fullAvif": null,
+          "cardSm": "/media/designs/groom-stop-ceremony/photo-27-card-sm.webp"
+        },
+        {
+          "photo": "photo-29",
+          "sha256_16": "cf33fd68933ac135",
+          "width": 3000,
+          "height": 4000,
+          "role": "gallery",
+          "card": "/media/designs/groom-stop-ceremony/photo-29-card.webp",
+          "cardAvif": null,
+          "full": "/media/designs/groom-stop-ceremony/photo-29-full.webp",
+          "fullAvif": null,
+          "cardSm": "/media/designs/groom-stop-ceremony/photo-29-card-sm.webp"
+        },
+        {
+          "photo": "photo-30",
+          "sha256_16": "a4eb5a8a9005bbfd",
+          "width": 3000,
+          "height": 4000,
+          "role": "gallery",
+          "card": "/media/designs/groom-stop-ceremony/photo-30-card.webp",
+          "cardAvif": null,
+          "full": "/media/designs/groom-stop-ceremony/photo-30-full.webp",
+          "fullAvif": null,
+          "cardSm": "/media/designs/groom-stop-ceremony/photo-30-card-sm.webp"
+        },
+        {
+          "photo": "photo-26",
+          "sha256_16": "e54b8e237f297977",
+          "width": 3000,
+          "height": 4000,
+          "role": "gallery",
+          "card": "/media/designs/groom-stop-ceremony/photo-26-card.webp",
+          "cardAvif": null,
+          "full": "/media/designs/groom-stop-ceremony/photo-26-full.webp",
+          "fullAvif": null,
+          "cardSm": "/media/designs/groom-stop-ceremony/photo-26-card-sm.webp"
+        }
+      ]
+    }
+  },
+  "hero": {
+    "desktop": "/media/hero/hero-desktop.webp",
+    "desktopAvif": "/media/hero/hero-desktop.avif",
+    "mobile": "/media/hero/hero-mobile.webp",
+    "mobileAvif": "/media/hero/hero-mobile.avif",
+    "og": "/media/hero/og-image.webp",
+    "source": "photo-22.jpg (B38 album, Dec 2025)"
+  },
+  "files": [
+    "photo-01",
+    "photo-02",
+    "photo-03",
+    "photo-04",
+    "photo-11",
+    "photo-05",
+    "photo-06",
+    "photo-07",
+    "photo-08",
+    "photo-09",
+    "photo-10",
+    "photo-12",
+    "photo-13",
+    "photo-14",
+    "photo-15",
+    "photo-16",
+    "photo-17",
+    "photo-18",
+    "photo-20",
+    "photo-19",
+    "photo-22",
+    "photo-25",
+    "photo-24",
+    "photo-21",
+    "photo-23",
+    "photo-28",
+    "photo-27",
+    "photo-29",
+    "photo-30",
+    "photo-26"
+  ]
+}

@@ -1,0 +1,19 @@
+# dependencies
+/node_modules
+
+# next
+/.next
+/out
+
+# production data (DB, customer uploads) — never in git
+/data
+
+# private originals (watermarked source photos from Google Photos)
+/_incoming
+
+# working artifacts
+/_media
+/_screenshots
+*.log
+.e2e-last-order
+.env*
