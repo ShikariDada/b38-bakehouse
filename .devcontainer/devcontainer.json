@@ -2,12 +2,13 @@
   "name": "B38 Bake House",
   "image": "mcr.microsoft.com/devcontainers/typescript-node:22",
   "postCreateCommand": "npm install --no-audit --no-fund && node scripts/seed.mjs && npm run build",
-  "forwardPorts": [3000],
+  "forwardPorts": [
+    3000
+  ],
   "portsAttributes": {
-    "3000": { "label": "B38 site", "onAutoForward": "openBrowser" }
-  },
-  "remoteEnv": {
-    "STUDIO_PASSWORD": "chhaya-b38-studio",
-    "PAYMENT_WEBHOOK_SECRET": "b38-whsec-7f3a91c4e2"
+    "3000": {
+      "label": "B38 site",
+      "onAutoForward": "openBrowser"
+    }
   }
 }
