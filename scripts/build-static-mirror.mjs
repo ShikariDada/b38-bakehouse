@@ -7,11 +7,28 @@ import path from "node:path";
 const BASE = process.env.SNAPSHOT_BASE || "http://localhost:3111";
 const OUT = "_pages";
 const SUBPATH = process.env.PAGES_SUBPATH || ""; // e.g. "/b38-bakehouse" when deploying to project pages
+// When set (e.g. a jsDelivr CDN prefix), internal clean links are rewritten to
+// absolute file paths, since CDNs serve files rather than directories.
+const LINK_BASE = process.env.LINK_BASE || "";
 
 fs.rmSync(OUT, { recursive: true, force: true });
 fs.mkdirSync(OUT, { recursive: true });
 
 const DESIGNS = JSON.parse(fs.readFileSync("content/designs.json", "utf8")).designs.map(d => d.slug);
+const PAGE_ROUTES = new Set([
+  "", "designs", ...DESIGNS.map(s => `designs/${s}`), "custom", "custom/from-scratch", "custom/from-design",
+  "how-it-works", "about", "faq", "contact", "policies/terms", "policies/privacy", "policies/refunds",
+]);
+
+function rewriteInternalLinks(html) {
+  if (!LINK_BASE) return html;
+  return html.replace(/href="(\/[a-z0-9/?=-]*)"/g, (m, p) => {
+    const clean = p.split("?")[0].replace(/\/$/, "");
+    if (!PAGE_ROUTES.has(clean)) return m; // asset or external — untouched
+    const file = clean === "" ? "/index.html" : `/${clean}/index.html`;
+    return `href="${LINK_BASE}${file}"`;
+  });
+}
 
 const ROUTES = [
   ["/", ""],
@@ -59,10 +76,11 @@ for (const [route, pagePath] of ROUTES) {
     .replace(/<head>/, `<head><base href="${SUBPATH}/">`)
     // neutralise forms so nothing half-works on the mirror
     .replace(/<form[^>]*action="(\/api[^"]*)"[^>]*>/g, "<form onsubmit=\"return false\">");
-  collectAssets(processed, pagePath);
+  const finalHtml = rewriteInternalLinks(processed);
+  collectAssets(finalHtml, pagePath);
   const dir = path.join(OUT, pagePath);
   fs.mkdirSync(dir, { recursive: true });
-  fs.writeFileSync(path.join(dir, "index.html"), processed);
+  fs.writeFileSync(path.join(dir, "index.html"), finalHtml);
   console.log("page", route);
 }
 
