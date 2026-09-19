@@ -7,6 +7,7 @@ fs.mkdirSync(DATA_DIR, { recursive: true });
 
 const db = new Database(path.join(DATA_DIR, "b38.db"));
 db.pragma("journal_mode = WAL");
+db.pragma("busy_timeout = 8000"); // wait for writers instead of throwing on lock contention
 db.pragma("foreign_keys = ON");
 
 db.exec(`

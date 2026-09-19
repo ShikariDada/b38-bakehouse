@@ -7,6 +7,7 @@ run(Database);
 function run(Db) {
   const db = new Db("data/b38.db");
   db.pragma("journal_mode = WAL");
+  db.pragma("busy_timeout = 8000");
   db.exec(fs.readFileSync("scripts/schema.sql", "utf8"));
 
   const designs = JSON.parse(fs.readFileSync("content/designs.json", "utf8"));

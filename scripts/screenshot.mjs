@@ -32,7 +32,16 @@ for (const [vk, viewport] of VIEWPORTS) {
     if (only && key !== only) continue;
     try {
       await page.goto(BASE + path, { waitUntil: "networkidle", timeout: 30000 });
-      await page.waitForTimeout(600);
+      // scroll through the page so lazy images load, then return to top
+      await page.evaluate(async () => {
+        for (let y = 0; y < document.body.scrollHeight; y += window.innerHeight * 0.8) {
+          window.scrollTo(0, y);
+          await new Promise(r => setTimeout(r, 90));
+        }
+        window.scrollTo(0, 0);
+      });
+      await page.waitForLoadState("networkidle");
+      await page.waitForTimeout(700);
       await page.screenshot({ path: `${OUT}/${key}-${vk}.png`, fullPage: key !== "home" || vk === "m" });
       console.log(`ok ${key}-${vk}`);
     } catch (e) {

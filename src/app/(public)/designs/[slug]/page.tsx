@@ -73,7 +73,7 @@ export default async function DesignPage({ params }: { params: Promise<{ slug: s
   };
 
   return (
-    <div className="mx-auto max-w-6xl px-4 sm:px-6 pt-[calc(var(--header-h)+1.5rem)]">
+    <div className="mx-auto max-w-6xl px-4 sm:px-6 pt-[calc(var(--header-h)+1.5rem)] pb-28 lg:pb-10">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       <nav aria-label="Breadcrumb" className="text-[0.85rem] text-ink-soft mb-5">

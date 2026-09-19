@@ -4,7 +4,6 @@ import { listDesigns } from "@/lib/catalog";
 import { getSettings } from "@/lib/settings";
 import { formatINR } from "@/lib/money";
 import { CakeCard } from "@/components/cake-card";
-import { Reveal } from "@/components/reveal";
 
 export const dynamic = "force-dynamic";
 
@@ -72,8 +71,7 @@ export default function Home() {
       </section>
 
       {/* ————— Recently made ————— */}
-      <Reveal>
-        <section className="mx-auto max-w-6xl px-4 sm:px-6 mt-20">
+      <section className="mx-auto max-w-6xl px-4 sm:px-6 mt-20">
           <div className="flex items-end justify-between gap-4">
             <div>
               <p className="eyebrow text-cocoa-600">01 · Straight from the oven</p>
@@ -102,11 +100,9 @@ export default function Home() {
           </div>
           <Link href="/designs" className="sm:hidden mt-4 inline-block text-[0.92rem] underline underline-offset-4">All designs</Link>
         </section>
-      </Reveal>
 
       {/* ————— Find your cake: occasions + date ————— */}
-      <Reveal>
-        <section className="mt-20 bg-cream-100 border-y border-line">
+      <section className="mt-20 bg-cream-100 border-y border-line">
           <div className="mx-auto max-w-6xl px-4 sm:px-6 py-12">
             <p className="eyebrow text-cocoa-600">02 · Find your cake</p>
             <div className="mt-2 grid gap-8 md:grid-cols-2 items-start">
@@ -129,11 +125,9 @@ export default function Home() {
             </div>
           </div>
         </section>
-      </Reveal>
 
       {/* ————— Two ways to start ————— */}
-      <Reveal>
-        <section className="mx-auto max-w-6xl px-4 sm:px-6 mt-20">
+      <section className="mx-auto max-w-6xl px-4 sm:px-6 mt-20">
           <p className="eyebrow text-cocoa-600">03 · Two ways to order</p>
           <div className="mt-7 grid md:grid-cols-2 border border-line rounded-[4px] overflow-hidden">
             <Link href="/designs" className="group relative block p-7 sm:p-10 bg-paper hover:bg-cream-100 transition-colors">
@@ -152,11 +146,9 @@ export default function Home() {
             </Link>
           </div>
         </section>
-      </Reveal>
 
       {/* ————— Designs teaser ————— */}
-      <Reveal>
-        <section className="mx-auto max-w-6xl px-4 sm:px-6 mt-20">
+      <section className="mx-auto max-w-6xl px-4 sm:px-6 mt-20">
           <div className="flex items-end justify-between gap-4">
             <div>
               <p className="eyebrow text-cocoa-600">04 · The archive</p>
@@ -171,11 +163,9 @@ export default function Home() {
           </div>
           <Link href="/designs" className="sm:hidden mt-4 inline-block text-[0.92rem] underline underline-offset-4">See all designs</Link>
         </section>
-      </Reveal>
 
       {/* ————— Craft: macro strip ————— */}
-      <Reveal>
-        <section className="mt-24">
+      <section className="mt-24">
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
             <p className="eyebrow text-cocoa-600">05 · How it&rsquo;s made</p>
             <h2 className="display display-md mt-2 max-w-xl">Piped by hand, one strand at a time</h2>
@@ -196,11 +186,9 @@ export default function Home() {
             ))}
           </div>
         </section>
-      </Reveal>
 
       {/* ————— How ordering works ————— */}
-      <Reveal>
-        <section className="mx-auto max-w-6xl px-4 sm:px-6 mt-24">
+      <section className="mx-auto max-w-6xl px-4 sm:px-6 mt-24">
           <p className="eyebrow text-cocoa-600">06 · Ordering</p>
           <h2 className="display display-md mt-2">No negotiation. No surprises.</h2>
           <div className="mt-9 grid gap-8 md:grid-cols-3">
@@ -220,11 +208,9 @@ export default function Home() {
             <Link href="/how-it-works" className="text-[0.95rem] underline underline-offset-4 decoration-line hover:text-cocoa-700">Lead times, delivery zones & payment details</Link>
           </div>
         </section>
-      </Reveal>
 
       {/* ————— Closing CTA ————— */}
-      <Reveal>
-        <section className="mx-auto max-w-6xl px-4 sm:px-6 mt-24">
+      <section className="mx-auto max-w-6xl px-4 sm:px-6 mt-24">
           <div className="bg-cocoa-950 text-cream-50 rounded-[4px] px-7 py-12 sm:px-12 sm:py-16 relative overflow-hidden">
             <div className="absolute right-0 top-0 h-full w-1/3 hidden md:block relative">
               <Image src={designs.find(d => d.slug === "midnight-oreo-gold")!.images[0].card} alt="" fill sizes="33vw" className="object-cover opacity-90" />
@@ -241,7 +227,6 @@ export default function Home() {
             </div>
           </div>
         </section>
-      </Reveal>
     </>
   );
 }

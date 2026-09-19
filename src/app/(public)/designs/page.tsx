@@ -5,7 +5,6 @@ import { listDesigns, variantPrices } from "@/lib/catalog";
 import { availabilityFor } from "@/lib/capacity";
 import { formatINR } from "@/lib/money";
 import { CakeCard } from "@/components/cake-card";
-import { Reveal } from "@/components/reveal";
 
 export const dynamic = "force-dynamic";
 
@@ -164,8 +163,7 @@ export default async function DesignsPage({ searchParams }: { searchParams: Prom
       )}
 
       {/* Price honesty footnote */}
-      <Reveal>
-        <section className="mt-16 rule pt-8 grid md:grid-cols-3 gap-8">
+      <section className="mt-16 rule pt-8 grid md:grid-cols-3 gap-8">
           <div>
             <h2 className="display-sm">What the price covers</h2>
             <p className="mt-2 text-ink-soft text-[0.95rem]">
@@ -188,7 +186,6 @@ export default async function DesignsPage({ searchParams }: { searchParams: Prom
             <Link href="/custom" className="mt-3 inline-block underline underline-offset-4 text-[0.95rem]">Start a custom brief →</Link>
           </div>
         </section>
-      </Reveal>
     </div>
   );
 }

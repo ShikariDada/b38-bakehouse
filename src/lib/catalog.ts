@@ -76,8 +76,14 @@ function parseTags(row: DesignRow, images: DesignImage[]): Design {
 
 const imagesStmt = db.prepare("SELECT * FROM design_images WHERE design_id = ? ORDER BY sort");
 
+type ImageRow = { photo: string; card: string; card_avif: string | null; card_sm: string; full: string; full_avif: string | null; role: string };
+
+function toImage(r: ImageRow): DesignImage {
+  return { photo: r.photo, card: r.card, cardAvif: r.card_avif, cardSm: r.card_sm, full: r.full, fullAvif: r.full_avif, role: r.role };
+}
+
 function withImages(rows: DesignRow[]): Design[] {
-  return rows.map(r => parseTags(r, imagesStmt.all(r.id) as unknown as DesignImage[]));
+  return rows.map(r => parseTags(r, (imagesStmt.all(r.id) as unknown as ImageRow[]).map(toImage)));
 }
 
 export function listDesigns(opts?: { occasion?: string; style?: string; color?: string; maxPrice?: number; eggless?: boolean; includeInactive?: boolean }): Design[] {
@@ -95,7 +101,7 @@ export function listDesigns(opts?: { occasion?: string; style?: string; color?: 
 export function getDesign(slug: string): Design | null {
   const row = db.prepare("SELECT * FROM designs WHERE slug = ?").get(slug) as DesignRow | undefined;
   if (!row) return null;
-  return parseTags(row, imagesStmt.all(row.id) as unknown as DesignImage[]);
+  return parseTags(row, (imagesStmt.all(row.id) as unknown as ImageRow[]).map(toImage));
 }
 
 export function variantPrices(baseKgPaise: number) {

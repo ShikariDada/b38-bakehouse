@@ -235,11 +235,10 @@ export function OrderConfigurator(p: ConfiguratorProps) {
       <aside className="hidden lg:block">
         <div className="sticky top-[calc(var(--header-h)+1.5rem)] panel p-5">
           <h2 className="display-sm">Your cake</h2>
-          <p className="mt-1 text-[0.9rem] text-ink-soft">{p.designName} · {variant.label}</p>
           <dl className="num mt-4 space-y-1.5 text-[0.92rem]">
             {quote.lines.map((l, i) => (
               <div key={i} className="flex justify-between gap-3">
-                <dt className="text-ink-soft">{l.label}{l.detail ? <span className="block text-[0.78rem] opacity-70">{l.detail}</span> : null}</dt>
+                <dt className={i === 0 ? "" : "text-ink-soft"}>{l.label}{l.detail ? <span className="block text-[0.78rem] text-ink-soft opacity-70">{l.detail}</span> : null}</dt>
                 <dd>{l.paise === 0 ? "included" : formatINR(l.paise)}</dd>
               </div>
             ))}
