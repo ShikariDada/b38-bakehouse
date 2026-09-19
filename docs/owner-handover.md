@@ -70,3 +70,18 @@ every order, quote and request. Photos live in git + the original album.
 
 The site never pretends: no fake reviews, no fake "X left!" timers, no invented discounts. If a
 date is full, it's because the oven is full. Keep it that way — it's why people trust it.
+
+## Deployment — the two links
+
+1. **Full ordering app (the real site):** runs in a GitHub Codespace on a `*.app.github.dev` URL.
+   - First-time authorization (one time only): run `npm run authorize:codespace`, open the URL it
+     prints in any browser signed into GitHub, and enter the code. ~20 seconds.
+   - Then `npm run deploy:codespace` creates the machine, seeds the database, builds, starts the
+     server and prints the public URL. Codespaces sleep after ~4 idle hours — reopening the URL
+     from github.com/codespaces wakes it, or re-run the deploy script.
+   - For a permanent always-on production host later: create a Cashfree account (see
+     `docs/payment-provider-decision.md`) and deploy the same repo to Vercel/Render — the code
+     needs no changes beyond adding the gateway keys.
+2. **Always-on catalogue mirror:** `node scripts/build-static-mirror.mjs` snapshots the whole
+   public site to `_pages/`. Host that folder anywhere static (Netlify Drop, Cloudflare Pages,
+   your own hosting) — ordering CTAs degrade to WhatsApp links automatically.
