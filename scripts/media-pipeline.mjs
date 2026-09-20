@@ -5,7 +5,7 @@ import { createHash } from "node:crypto";
 import { mkdir, writeFile, readFile } from "node:fs/promises";
 import path from "node:path";
 
-const SRC = "_incoming/b38-photos-cleaned"; // watermark-free + enhanced
+const SRC = "_incoming/b38-photos-graded"; // watermark-free + appetite + moody-luxe grade
 const OUT = "public/media";
 
 // Design archive produced by reviewing every photo in the album (Sep 2026).

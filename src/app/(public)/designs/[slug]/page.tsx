@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const d = getDesign(slug);
   if (!d) return { title: "Design not found" };
   return {
-    title: `${d.name} — design No. ${String(d.number).padStart(2, "0")}`,
+    title: `${d.name}, design no. ${String(d.number).padStart(2, "0")}`,
     description: d.tagline,
     openGraph: { images: [d.images[0].card], title: `${d.name} · B38 Bake House` },
   };
@@ -49,16 +49,13 @@ export default async function DesignPage({ params }: { params: Promise<{ slug: s
     eventDate: earliestDate(d.leadHours),
   });
 
-  const similar = listDesigns({ style: d.styleTags[0] })
-    .filter(x => x.slug !== d.slug)
-    .slice(0, 4);
-  const city = s.city;
+  const similar = listDesigns({ style: d.styleTags[0] }).filter(x => x.slug !== d.slug).slice(0, 4);
+  const from = variants[0].pricePaise;
 
-  // Product structured data — only truthful fields
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Product",
-    name: `${d.name} — custom cake by B38 Bake House`,
+    name: `${d.name}, custom cake by B38 Bake House`,
     description: d.tagline,
     image: [d.images[0].full],
     brand: { "@type": "Brand", name: "B38 Bake House" },
@@ -68,7 +65,7 @@ export default async function DesignPage({ params }: { params: Promise<{ slug: s
       lowPrice: variants[0].pricePaise / 100,
       highPrice: variants[variants.length - 1].pricePaise / 100,
       availability: "https://schema.org/PreOrder",
-      areaServed: city,
+      areaServed: s.city,
     },
   };
 
@@ -76,44 +73,33 @@ export default async function DesignPage({ params }: { params: Promise<{ slug: s
     <div className="mx-auto max-w-6xl px-4 sm:px-6 pt-[calc(var(--header-h)+1.5rem)] pb-28 lg:pb-10">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-      <nav aria-label="Breadcrumb" className="text-[0.85rem] text-ink-soft mb-5">
-        <Link href="/designs" className="hover:text-cocoa-700 underline-offset-2 hover:underline">Designs</Link>
+      <nav aria-label="Breadcrumb" className="text-[0.87rem] text-ink-soft mb-5">
+        <Link href="/designs" className="hover:text-strawberry-deep font-medium">Designs</Link>
         <span className="mx-1.5">/</span>
         <span className="num">No. {String(d.number).padStart(2, "0")}</span>
       </nav>
 
       <div className="grid lg:grid-cols-[55%_1fr] gap-8 lg:gap-12">
-        <div>
-          <CakeGallery images={d.images} name={d.name} />
-          <div className="mt-5 hidden lg:block">
-            <p className="eyebrow text-cocoa-600">Inside the design</p>
-            <p className="mt-2 text-ink-soft text-[0.97rem] leading-relaxed">{d.story}</p>
-            <dl className="mt-4 flex flex-wrap gap-x-8 gap-y-2 text-[0.88rem]">
-              <div><dt className="text-ink-soft inline">Style: </dt><dd className="inline">{d.styleTags.join(", ")}</dd></div>
-              <div><dt className="text-ink-soft inline">Best for: </dt><dd className="inline">{d.occasionTags.join(", ").replace(/-/g, " ")}</dd></div>
-            </dl>
-            <p className="mt-4 text-[0.85rem] text-ink-soft">
-              Contains wheat, milk; most flavours contain egg (eggless available). Made in a home kitchen that also handles nuts.
-            </p>
+        <div className="rv-img rounded-[28px] overflow-hidden" style={{ aspectRatio: "5 / 6" }}>
+          <div className="rv-img-inner h-full">
+            <CakeGallery images={d.images} name={d.name} />
           </div>
         </div>
 
         <div>
-          <header>
-            <p className="num text-cocoa-600 text-[0.9rem]">No. {String(d.number).padStart(2, "0")} · from {formatINR(Math.round(d.baseKgPaise * 0.6 / 5000) * 5000)}</p>
-            <h1 className="display display-md mt-1">{d.name}</h1>
+          <header className="rv">
+            <p className="eyebrow text-strawberry-deep">No. {String(d.number).padStart(2, "0")} · from {formatINR(from)}</p>
+            <h1 className="display display-md mt-2">{d.name}</h1>
             <p className="mt-3 text-ink-soft lg:hidden">{d.tagline}</p>
             <p className="num mt-2 text-[0.88rem] text-ink-soft">
-              {d.leadHours >= 72 ? "3 days" : "2 days"} notice · made fresh in {city}
-              {d.rushAllowed ? " · short-notice possible" : ""}
+              {d.leadHours >= 72 ? "3 days" : "2 days"} notice · baked fresh in {s.city}
+              {d.rushAllowed ? " · short notice possible" : ""}
             </p>
           </header>
 
-          <div className="mt-8 lg:hidden">
-            <p className="text-ink-soft text-[0.97rem] leading-relaxed">{d.story}</p>
-          </div>
+          <div className="mt-6 lg:hidden text-ink-soft text-[0.97rem] leading-relaxed rv" data-delay="80">{d.story}</div>
 
-          <div className="mt-9 lg:mt-6">
+          <div className="mt-9 lg:mt-7">
             <OrderConfigurator
               designSlug={d.slug}
               designName={d.name}
@@ -123,22 +109,26 @@ export default async function DesignPage({ params }: { params: Promise<{ slug: s
               flavours={flavours.map(f => ({ id: f.id, name: f.name, adjustmentPaise: f.adjustment_paise }))}
               addons={addons.map(a => ({ id: a.id, name: a.name, description: a.description, pricePaise: a.price_paise }))}
               dates={dates}
-              initialQuote={
-                initial.ok
-                  ? initial.quote
-                  : { totalPaise: 0, lines: [], deliveryPaise: 0 }
-              }
-              zonesHint={city}
+              initialQuote={initial.ok ? initial.quote : { totalPaise: 0, lines: [], deliveryPaise: 0 }}
+              zonesHint={s.city}
             />
           </div>
+
+          <section className="rv mt-10 hidden lg:block border-t border-line pt-6" data-delay="120">
+            <h2 className="eyebrow text-strawberry-deep">Inside the design</h2>
+            <p className="mt-2 text-ink-soft text-[0.97rem] leading-relaxed">{d.story}</p>
+            <p className="mt-3 text-[0.85rem] text-ink-soft">
+              Contains wheat and milk. Most flavours contain egg, eggless is +{formatINR(5000)}. Made in a home kitchen that also handles nuts.
+            </p>
+          </section>
         </div>
       </div>
 
       {similar.length > 0 && (
         <section className="mt-20">
-          <h2 className="display-sm">Similar from the archive</h2>
-          <div className="mt-5 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-5">
-            {similar.map(x => <CakeCard key={x.slug} design={x} />)}
+          <h2 className="display-sm">You might also eat</h2>
+          <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-8">
+            {similar.map(x => <CakeCard key={x.slug} design={x} delay={0} />)}
           </div>
         </section>
       )}

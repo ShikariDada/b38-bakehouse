@@ -4,7 +4,7 @@ const BASE = process.env.BASE_URL || "http://localhost:3111";
 
 test("browse → configure → order → mock UPI pay → confirmed tracking", async ({ page }) => {
   await page.goto(BASE + "/");
-  await expect(page.getByRole("heading", { name: /Bring the reference/ })).toBeVisible();
+  await expect(page.getByRole("heading", { name: /looks like/ })).toBeVisible();
 
   await page.goto(BASE + "/designs/cocoa-drip-crown");
   await expect(page.getByText("Cocoa Drip Crown").first()).toBeVisible();

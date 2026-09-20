@@ -9,7 +9,7 @@ export default async function StudioDesigns() {
 
   return (
     <div>
-      <h1 className="display display-md">Designs</h1>
+      <div className="flex items-center justify-between gap-3"><h1 className="display display-md">Designs</h1><Link href="/studio/designs/new" className="btn btn-cocoa !py-2.5">+ Add design</Link></div>
       <p className="mt-1 text-[0.9rem] text-ink-soft">Prices, lead times and visibility — click to edit.</p>
       <ul className="mt-6 divide-y divide-line border border-line rounded-[4px] bg-[#FFFDF9]">
         {rows.map(d => (

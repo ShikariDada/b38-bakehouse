@@ -19,7 +19,7 @@ const POLICIES: Record<string, { title: string; body: (s: ReturnType<typeof getS
     title: "Privacy",
     body: s => (
       <>
-        <p>We collect what an order needs: your name, phone number, optional email, delivery address if applicable, and your cake details. Reference photos you upload for custom work are private — they are never published without asking you first.</p>
+        <p>We collect what an order needs: your name, phone number, optional email, delivery address if applicable, and your cake details. Reference photos you upload for custom work are private: they are never published without asking you first.</p>
         <p>We don&rsquo;t run ads or sell data. Order records are kept for accounting; references are cleaned up periodically. Want your data deleted? Message {s.phoneDisplay} with your order number.</p>
       </>
     ),
@@ -35,7 +35,7 @@ const POLICIES: Record<string, { title: string; body: (s: ReturnType<typeof getS
           <li>Under 24 hours or after production starts: the cake is yours to pick up; no refund.</li>
           <li>If we cancel (illness, emergency), you get a full refund, always.</li>
         </ul>
-        <p>Something wrong with the cake you received? Tell us the same day with a photo and we&rsquo;ll make it right — remake or refund, our call together.</p>
+        <p>Something wrong with the cake you received? Tell us the same day with a photo and we&rsquo;ll make it right: remake or refund, our call together.</p>
       </>
     ),
   },
@@ -54,9 +54,12 @@ export default async function PolicyPage({ params }: { params: Promise<{ slug: s
   const s = getSettings();
 
   return (
-    <div className="mx-auto max-w-3xl px-4 sm:px-6 pt-[calc(var(--header-h)+2rem)] pb-16">
-      <h1 className="display display-lg">{p.title}</h1>
-      <div className="mt-8 space-y-4 text-[1rem] leading-relaxed text-ink-soft max-w-prose">
+    <div className="mx-auto max-w-3xl px-4 sm:px-6 pt-[calc(var(--header-h)+2rem)] pb-20">
+      <div className="rv" data-delay="0">
+        <p className="eyebrow text-strawberry-deep">Policies</p>
+        <h1 className="display display-lg mt-3">{p.title}</h1>
+      </div>
+      <div className="mt-8 border-t border-line pt-8 space-y-4 text-[1rem] leading-relaxed text-ink-soft max-w-prose">
         {p.body(s)}
       </div>
       <p className="num mt-10 text-[0.85rem] text-ink-soft">Last updated 20 September 2026 · {s.businessName}, {s.city}</p>

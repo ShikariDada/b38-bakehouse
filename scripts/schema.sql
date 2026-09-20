@@ -184,3 +184,19 @@ CREATE TABLE IF NOT EXISTS audit_log (
 CREATE INDEX IF NOT EXISTS idx_orders_event ON orders(event_date);
 CREATE INDEX IF NOT EXISTS idx_orders_status ON orders(status);
 CREATE INDEX IF NOT EXISTS idx_design_images ON design_images(design_id);
+
+CREATE TABLE IF NOT EXISTS coupons (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  code TEXT UNIQUE NOT NULL,
+  kind TEXT NOT NULL DEFAULT 'percent',
+  value INTEGER NOT NULL,
+  min_spend_paise INTEGER NOT NULL DEFAULT 0,
+  max_discount_paise INTEGER,
+  starts_at TEXT,
+  ends_at TEXT,
+  usage_limit INTEGER,
+  used_count INTEGER NOT NULL DEFAULT 0,
+  active INTEGER NOT NULL DEFAULT 1,
+  note TEXT,
+  created_at TEXT NOT NULL DEFAULT (datetime('now'))
+);

@@ -13,7 +13,7 @@ export default function PickDesignToCustomise() {
       <p className="eyebrow text-cocoa-600">Customise</p>
       <h1 className="display display-lg mt-2">Pick your starting point</h1>
       <p className="mt-3 max-w-lg text-ink-soft">
-        Choose the cake closest to what you have in mind. The brief will carry it along — and we&rsquo;ll quote the changes before anything is confirmed.
+        Choose the cake closest to what you have in mind. The brief will carry it along, and we&rsquo;ll quote the changes before anything is confirmed.
       </p>
       <div className="mt-9 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-3 gap-y-7 sm:gap-x-5">
         {designs.map(d => <CakeCard key={d.slug} design={d} />)}

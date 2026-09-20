@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import type { Metadata } from "next";
 import { listDesigns, variantPrices } from "@/lib/catalog";
 import { availabilityFor } from "@/lib/capacity";
@@ -9,8 +8,8 @@ import { CakeCard } from "@/components/cake-card";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Designs — real cakes, ready to order",
-  description: "Every design here is a cake B38 Bake House has already made by hand. Choose a size, flavour and date — the price is fixed.",
+  title: "Designs, all real, all orderable",
+  description: "Every design here is a cake B38 Bake House has already made by hand. Choose a size, flavour and date. The price is fixed.",
 };
 
 const OCCASIONS = ["birthday", "anniversary", "kids", "milestone", "festivals", "just-like-that"];
@@ -43,7 +42,6 @@ export default async function DesignsPage({ searchParams }: { searchParams: Prom
     );
   }
 
-  // Date-aware results: each design gets its availability state for the chosen date
   const dateStates = new Map<string, "available" | "rush" | "full" | "too-soon">();
   if (date) {
     const t = new Date(date + "T12:00:00+05:30").getTime();
@@ -60,100 +58,84 @@ export default async function DesignsPage({ searchParams }: { searchParams: Prom
 
   const current: Record<string, string> = {};
   for (const [k, v] of Object.entries(sp)) if (v) current[k] = v;
-  const hasFilters = Object.keys(current).some(k => !["date", "q"].includes(k)) || !!date || !!sp.q;
+  const hasFilters = occasion || style || color || date || sp.q || eggless;
 
   return (
     <div className="mx-auto max-w-6xl px-4 sm:px-6 pt-[calc(var(--header-h)+2rem)]">
-      <header className="flex items-end justify-between gap-4 flex-wrap">
-        <div>
-          <p className="eyebrow text-cocoa-600">The archive</p>
-          <h1 className="display display-lg mt-2">Designs</h1>
-          <p className="mt-3 max-w-lg text-ink-soft">
-            Cakes we&rsquo;ve already made — order one as it was, or personalise the details. Fixed prices, no haggling.
-          </p>
-        </div>
-        <form action="/designs" method="get" className="flex gap-2 w-full sm:w-auto">
-          {occasion && <input type="hidden" name="occasion" value={occasion} />}
-          <input
-            type="search" name="q" defaultValue={sp.q || ""} placeholder='Try "flower" or "chocolate"'
-            aria-label="Search designs" className="field sm:w-64"
-          />
-          <button className="btn btn-ghost">Search</button>
-        </form>
+      <header className="max-w-2xl">
+        <p className="eyebrow text-strawberry-deep">The archive</p>
+        <h1 className="display display-lg mt-3">Pick your <em>cake</em></h1>
+        <p className="mt-4 text-ink-soft text-[1.02rem]">
+          {listDesigns().length} designs, all real, all from this oven. Order one as it was, or make it theirs.
+        </p>
       </header>
 
-      {/* When do you need it — the most useful filter */}
-      <form action="/designs" method="get" className="mt-7 flex flex-wrap items-center gap-2.5 bg-cream-100 border border-line rounded-[4px] p-3.5">
+      <form action="/designs" method="get" className="mt-8 flex flex-wrap items-center gap-2.5 bg-cream border border-line rounded-[20px] p-4">
         {occasion && <input type="hidden" name="occasion" value={occasion} />}
         {style && <input type="hidden" name="style" value={style} />}
         {color && <input type="hidden" name="color" value={color} />}
-        <label htmlFor="date" className="text-[0.92rem] font-medium text-cocoa-800">When do you need it?</label>
-        <input type="date" id="date" name="date" defaultValue={date} className="field num !w-auto" />
-        <button className="btn btn-cocoa !py-2.5">Check</button>
+        <label htmlFor="date" className="font-bold text-[0.92rem]">When&rsquo;s the party?</label>
+        <input type="date" id="date" name="date" defaultValue={date} className="field num !w-auto !rounded-full" />
+        <button className="btn btn-primary !py-2.5 !px-5">Check dates</button>
         {date && (
-          <Link href={chipHref(current, "date")} className="chip" aria-pressed="true">
+          <Link href={chipHref(current, "date")} className="chip is-active" aria-pressed="true">
             {new Date(date + "T00:00:00").toLocaleDateString("en-IN", { day: "numeric", month: "short" })} ✕
           </Link>
         )}
-        {eggless && <Link href={chipHref(current, "eggless")} className="chip" aria-pressed="true">Eggless ✕</Link>}
-        {!eggless && <Link href={chipHref(current, "eggless", "1")} className="chip">Eggless only</Link>}
+        {eggless ? (
+          <Link href={chipHref(current, "eggless")} className="chip is-active" aria-pressed="true">Eggless ✕</Link>
+        ) : (
+          <Link href={chipHref(current, "eggless", "1")} className="chip">Eggless only</Link>
+        )}
+        <span className="flex-1" />
+        <input
+          type="search" name="q" defaultValue={sp.q || ""} placeholder="Search: flower, oreo..."
+          aria-label="Search designs" className="field !rounded-full sm:!w-60 !py-2.5"
+        />
       </form>
 
-      {/* Filter chips */}
-      <div className="mt-5 space-y-2.5">
-        <div className="flex gap-2 overflow-x-auto pb-1">
-          <span className="text-[0.8rem] text-ink-soft self-center shrink-0 w-16">Occasion</span>
-          {OCCASIONS.map(o => (
-            <Link key={o} href={chipHref(current, "occasion", o)} className="chip" aria-pressed={occasion === o}>
-              {o.replace("-", " ")}
-            </Link>
-          ))}
-        </div>
-        <div className="flex gap-2 overflow-x-auto pb-1">
-          <span className="text-[0.8rem] text-ink-soft self-center shrink-0 w-16">Style</span>
-          {STYLES.map(st => (
-            <Link key={st} href={chipHref(current, "style", st)} className="chip" aria-pressed={style === st}>
-              {st.replace("-", " ")}
-            </Link>
-          ))}
-        </div>
-        <div className="flex gap-2 overflow-x-auto pb-1">
-          <span className="text-[0.8rem] text-ink-soft self-center shrink-0 w-16">Colour</span>
-          {COLOURS.map(c => (
-            <Link key={c} href={chipHref(current, "color", c)} className="chip" aria-pressed={color === c}>
-              {c}
-            </Link>
-          ))}
-          {hasFilters && <Link href="/designs" className="chip">Clear all</Link>}
-        </div>
+      <div className="mt-4 flex gap-2 overflow-x-auto pb-1">
+        <span className="text-[0.8rem] font-bold text-ink-soft self-center shrink-0">Filter:</span>
+        {OCCASIONS.map(o => (
+          <Link key={o} href={chipHref(current, "occasion", o)} className="chip" aria-pressed={occasion === o}>{o.replace("-", " ")}</Link>
+        ))}
+        {STYLES.map(st => (
+          <Link key={st} href={chipHref(current, "style", st)} className="chip" aria-pressed={style === st}>{st.replace("-", " ")}</Link>
+        ))}
+        {COLOURS.map(c => (
+          <Link key={c} href={chipHref(current, "color", c)} className="chip" aria-pressed={color === c}>{c}</Link>
+        ))}
+        {hasFilters && <Link href="/designs" className="chip !border-strawberry !text-strawberry-deep font-bold">Clear all ✕</Link>}
       </div>
 
-      <p className="num mt-6 text-[0.88rem] text-ink-soft">
-        {designs.length} {designs.length === 1 ? "design" : "designs"}{occasion && ` · ${occasion}`}{date && ` · for ${new Date(date + "T00:00:00").toLocaleDateString("en-IN", { day: "numeric", month: "short" })}`}
-      </p>
+      {date && (
+        <p className="num mt-4 text-[0.88rem] text-ink-soft">
+          Showing availability for <strong>{new Date(date + "T00:00:00").toLocaleDateString("en-IN", { weekday: "short", day: "numeric", month: "long" })}</strong>
+        </p>
+      )}
 
       {designs.length === 0 ? (
-        <div className="mt-10 border border-line rounded-[4px] bg-cream-100 p-10 text-center">
-          <p className="display-sm">Nothing in those filters yet.</p>
-          <p className="mt-2 text-ink-soft">Clear the filters, or ask us to make it anyway.</p>
+        <div className="mt-10 rounded-[28px] bg-butter-tint border border-butter/40 p-10 text-center">
+          <p className="display-sm">Nothing matches those filters yet.</p>
+          <p className="mt-2 text-ink-soft">Clear them, or ask us to make it anyway.</p>
           <div className="mt-5 flex justify-center gap-3">
             <Link href="/designs" className="btn btn-ghost">Clear filters</Link>
-            <Link href="/custom" className="btn btn-cocoa">Request it custom</Link>
+            <Link href="/custom" className="btn btn-primary">Request it custom</Link>
           </div>
         </div>
       ) : (
-        <div className="mt-5 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-3 gap-y-7 sm:gap-x-5">
+        <div className="mt-7 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-9">
           {designs.map((d, i) => (
             <div key={d.slug}>
-              <CakeCard design={d} priority={i < 4} />
+              <CakeCard design={d} priority={i < 4} delay={(i % 4) * 50} />
               {date && dateStates.has(d.slug) && (
-                <p className="mt-1 text-[0.78rem] num">
+                <p className="mt-1.5 text-[0.78rem] num font-medium">
                   {(() => {
                     const st = dateStates.get(d.slug);
-                    if (st === "available") return <span className="text-green-800">● Free on your date</span>;
-                    if (st === "rush") return <span className="text-gold-700">● Possible short-notice (+15%)</span>;
-                    if (st === "full") return <span className="text-cocoa-600">● That date is full for this design</span>;
-                    return <span className="text-cocoa-600">● Too soon — needs more notice</span>;
+                    if (st === "available") return <span className="text-[#4C6B2F]">● Free on your date</span>;
+                    if (st === "rush") return <span className="text-butter">● Short notice +15%</span>;
+                    if (st === "full") return <span className="text-strawberry-deep">● Full for this design</span>;
+                    return <span className="text-strawberry-deep">● Needs more notice</span>;
                   })()}
                 </p>
               )}
@@ -162,30 +144,27 @@ export default async function DesignsPage({ searchParams }: { searchParams: Prom
         </div>
       )}
 
-      {/* Price honesty footnote */}
-      <section className="mt-16 rule pt-8 grid md:grid-cols-3 gap-8">
-          <div>
-            <h2 className="display-sm">What the price covers</h2>
-            <p className="mt-2 text-ink-soft text-[0.95rem]">
-              A hand-piped cake made after you order, packed in a box with your message on the board. {formatINR(5000)} adds eggless to any design.
-            </p>
-          </div>
-          <div>
-            <h2 className="display-sm">Sizes</h2>
-            <ul className="num mt-2 text-[0.95rem] text-ink-soft space-y-1">
-              {variantPrices(125000).map(v => (
-                <li key={v.id}>{v.label} · {v.serves}</li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h2 className="display-sm">Not sure?</h2>
-            <p className="mt-2 text-ink-soft text-[0.95rem]">
-              Send a photo of anything you&rsquo;ve seen — we&rsquo;ll tell you honestly what we&rsquo;d change and what it costs.
-            </p>
-            <Link href="/custom" className="mt-3 inline-block underline underline-offset-4 text-[0.95rem]">Start a custom brief →</Link>
-          </div>
-        </section>
+      <section className="mt-20 rounded-[28px] bg-cream border border-line p-8 sm:p-10 grid md:grid-cols-3 gap-8">
+        <div>
+          <h2 className="display-sm">What the price covers</h2>
+          <p className="mt-2 text-ink-soft text-[0.95rem]">
+            A hand-piped cake made after you order, boxed with your message on the board. {formatINR(5000)} makes any design eggless.
+          </p>
+        </div>
+        <div>
+          <h2 className="display-sm">Sizes</h2>
+          <ul className="num mt-2 text-[0.95rem] text-ink-soft space-y-1">
+            {variantPrices(125000).map(v => <li key={v.id}>{v.label} · {v.serves}</li>)}
+          </ul>
+        </div>
+        <div>
+          <h2 className="display-sm">Not sure which one?</h2>
+          <p className="mt-2 text-ink-soft text-[0.95rem]">
+            Send us a photo of anything you&rsquo;ve seen. We&rsquo;ll say honestly what we&rsquo;d keep and what it costs.
+          </p>
+          <Link href="/custom" className="mt-3 inline-block font-bold text-strawberry-deep underline underline-offset-4 decoration-2">Start a brief →</Link>
+        </div>
+      </section>
     </div>
   );
 }

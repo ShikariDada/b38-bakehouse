@@ -61,6 +61,7 @@ function run(Db) {
     });
 
     // flavours (adjustments in paise; seasonal note via name suffix)
+    db.prepare("DELETE FROM sqlite_sequence WHERE name IN ('flavours','addons','delivery_zones','designs','design_images')").run();
     const fl = db.prepare("DELETE FROM flavours");
     fl.run();
     const addFl = db.prepare("INSERT INTO flavours (name, adjustment_paise, sort) VALUES (?, ?, ?)");

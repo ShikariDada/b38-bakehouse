@@ -43,6 +43,9 @@ export async function POST(req: Request) {
     quote.subtotalPaise, quote.deliveryPaise, quote.discountPaise, quote.totalPaise,
   );
   db.prepare("INSERT INTO order_events (order_id, to_status, note) VALUES (?, 'awaiting_payment', 'Order created; capacity softly held for 30 minutes')").run(info.lastInsertRowid);
+  if (sel.couponCode) {
+    db.prepare('UPDATE coupons SET used_count = used_count + 1 WHERE code = ?').run(sel.couponCode.trim().toUpperCase());
+  }
 
   return NextResponse.json({ code, token, total: quote.totalPaise });
 }

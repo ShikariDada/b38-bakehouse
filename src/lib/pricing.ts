@@ -1,5 +1,7 @@
 // Server-authoritative pricing. The browser never sends totals — it sends option IDs,
 // and this engine recomputes everything from the DB.
+import db from "./db";
+import { formatINR } from "./money";
 import { getDesign, listAddons, listFlavours, listZones, variantPrices, type Design } from "./catalog";
 
 export type OrderSelection = {
@@ -81,10 +83,27 @@ export function computeQuote(sel: OrderSelection): { ok: true; quote: ComputedQu
 
   const subtotal = lines.reduce((s, l) => s + l.paise, 0);
   let discount = 0;
+  let couponCode: string | null = null;
   if (sel.couponCode) {
-    // Coupon infrastructure — codes are created/activated by the owner in Studio.
-    // No public codes are seeded, so unknown codes fail loudly rather than silently discounting.
-    return { ok: false, error: "That code isn't active." };
+    const code = sel.couponCode.trim().toUpperCase();
+    const c = db
+      .prepare("SELECT * FROM coupons WHERE code = ?")
+      .get(code) as
+      | { id: number; kind: string; value: number; min_spend_paise: number; max_discount_paise: number | null; starts_at: string | null; ends_at: string | null; usage_limit: number | null; used_count: number; active: number }
+      | undefined;
+    if (!c || !c.active) return { ok: false, error: "That code isn't active." };
+    const now = new Date().toISOString().slice(0, 10);
+    if (c.starts_at && now < c.starts_at) return { ok: false, error: "That code isn't active yet." };
+    if (c.ends_at && now > c.ends_at) return { ok: false, error: "That code has expired." };
+    if (c.usage_limit && c.used_count >= c.usage_limit) return { ok: false, error: "That code has been fully used." };
+    if (subtotal < c.min_spend_paise) {
+      return { ok: false, error: `That code works on orders above ${formatINR(c.min_spend_paise)}.` };
+    }
+    discount = c.kind === "percent" ? Math.round((subtotal * c.value) / 100 / 1000) * 1000 : c.value;
+    if (c.max_discount_paise) discount = Math.min(discount, c.max_discount_paise);
+    discount = Math.min(discount, subtotal);
+    couponCode = code;
+    lines.push({ label: `Coupon ${code}`, paise: -discount });
   }
 
   return {

@@ -54,11 +54,11 @@ export default async function TrackPage({ params }: { params: Promise<{ token: s
 
   return (
     <div className="mx-auto max-w-2xl px-4 sm:px-6 pt-[calc(var(--header-h)+2rem)] pb-24">
-      <p className="eyebrow text-cocoa-600">Order {order.public_code}</p>
+      <p className="eyebrow text-strawberry-deep">Order {order.public_code}</p>
 
       <div className="mt-4 flex items-center gap-4">
         {img && (
-          <div className="relative w-20 h-20 rounded-[4px] overflow-hidden bg-cream-200 shrink-0">
+          <div className="relative w-20 h-20 rounded-[4px] overflow-hidden bg-vanilla-deep shrink-0">
             <Image src={img.card} alt="" fill sizes="80px" className="object-cover" />
           </div>
         )}
@@ -75,15 +75,15 @@ export default async function TrackPage({ params }: { params: Promise<{ token: s
             <li key={st.key} className="flex gap-4">
               <div className="flex flex-col items-center">
                 <span className="w-3.5 h-3.5 rounded-full border-2 mt-1.5" style={{
-                  background: done ? "var(--color-cocoa-700)" : "transparent",
-                  borderColor: done ? "var(--color-cocoa-700)" : "var(--color-line-strong)",
+                  background: done ? "var(--color-strawberry)" : "transparent",
+                  borderColor: done ? "var(--color-strawberry)" : "rgba(64,37,26,0.28)",
                 }} />
-                {i < STEPS.length - 1 && <span className="w-px flex-1 min-h-7" style={{ background: i < idx ? "var(--color-cocoa-700)" : "var(--color-line)" }} />}
+                {i < STEPS.length - 1 && <span className="w-px flex-1 min-h-7" style={{ background: i < idx ? "var(--color-strawberry)" : "var(--color-line)" }} />}
               </div>
               <div className="pb-5">
                 <p className={`text-[0.97rem] ${done ? "font-medium" : "text-ink-soft"}`}>{st.label}</p>
                 {i === idx && i === 0 && (
-                  <p className="text-[0.85rem] text-cocoa-700 mt-1">Your date is held — complete payment to lock it in.</p>
+                  <p className="text-[0.85rem] text-strawberry-deep mt-1">Your date is held — complete payment to lock it in.</p>
                 )}
                 {i === idx && i === 2 && <p className="text-[0.85rem] text-ink-soft mt-1">Chhaya has started on your cake.</p>}
               </div>
@@ -93,7 +93,7 @@ export default async function TrackPage({ params }: { params: Promise<{ token: s
       </ol>
 
       <section className="panel p-5">
-        <h2 className="eyebrow text-cocoa-600">What you ordered</h2>
+        <h2 className="eyebrow text-strawberry-deep">What you ordered</h2>
         <dl className="num mt-3 space-y-1.5 text-[0.92rem]">
           {spec.quote.lines.map((l, i) => (
             <div key={i} className="flex justify-between gap-3">

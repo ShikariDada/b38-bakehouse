@@ -33,6 +33,9 @@ export function OrderConfigurator(p: ConfiguratorProps) {
   const [date, setDate] = useState<string>("");
   const [fulfilment, setFulfilment] = useState<"pickup" | "delivery">("pickup");
   const [pincode, setPincode] = useState("");
+  const [couponInput, setCouponInput] = useState("");
+  const [couponCode, setCouponCode] = useState<string | undefined>(undefined);
+  const [couponMsg, setCouponMsg] = useState<string | null>(null);
   const [quote, setQuote] = useState<Quote>(p.initialQuote);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -49,8 +52,9 @@ export function OrderConfigurator(p: ConfiguratorProps) {
       fulfilment,
       deliveryPincode: fulfilment === "delivery" ? pincode : undefined,
       eventDate: date || "2099-01-01",
+      couponCode,
     }),
-    [p.designSlug, variant, flavourId, eggless, message, addonIds, fulfilment, pincode, date],
+    [p.designSlug, variant, flavourId, eggless, message, addonIds, fulfilment, pincode, date, couponCode],
   );
 
   useEffect(() => {
@@ -62,7 +66,8 @@ export function OrderConfigurator(p: ConfiguratorProps) {
           headers: { "content-type": "application/json" },
           body: JSON.stringify({ ...selection, eventDate: date || futureDefault(p.leadHours) }),
         });
-        if (res.ok) setQuote(await res.json());
+        if (res.ok) { const q = await res.json(); setQuote(q); if (couponCode && !q.lines?.some((l: { label: string }) => l.label.startsWith("Coupon"))) setCouponMsg("Code not usable on this order."); else if (couponCode) setCouponMsg(null); }
+        else if (couponCode) { const e = await res.json().catch(() => null); setCouponMsg(e?.error || null); }
       } catch { /* keep last good quote */ }
     }, 220);
     return () => { if (debounce.current) clearTimeout(debounce.current); };
@@ -93,7 +98,7 @@ export function OrderConfigurator(p: ConfiguratorProps) {
       <div className="space-y-9">
         {/* Size */}
         <section aria-labelledby="cfg-size">
-          <h2 id="cfg-size" className="eyebrow text-cocoa-600">Size</h2>
+          <h2 id="cfg-size" className="eyebrow text-strawberry-deep">Size</h2>
           <div className="mt-3 flex flex-wrap gap-2.5">
             {p.variants.map(v => (
               <button key={v.id} className="chip" aria-pressed={variant.id === v.id} onClick={() => setVariant(v)}>
@@ -107,7 +112,7 @@ export function OrderConfigurator(p: ConfiguratorProps) {
 
         {/* Flavour */}
         <section aria-labelledby="cfg-flavour">
-          <h2 id="cfg-flavour" className="eyebrow text-cocoa-600">Flavour</h2>
+          <h2 id="cfg-flavour" className="eyebrow text-strawberry-deep">Flavour</h2>
           <div className="mt-3 flex flex-wrap gap-2.5">
             {p.flavours.map(f => (
               <button key={f.id} className="chip" aria-pressed={flavourId === f.id} onClick={() => setFlavourId(f.id)}>
@@ -138,7 +143,7 @@ export function OrderConfigurator(p: ConfiguratorProps) {
 
         {/* Personalisation */}
         <section aria-labelledby="cfg-personalise">
-          <h2 id="cfg-personalise" className="eyebrow text-cocoa-600">Make it theirs</h2>
+          <h2 id="cfg-personalise" className="eyebrow text-strawberry-deep">Make it theirs</h2>
           <label htmlFor="msg" className="field-label mt-3">Message on the cake <span className="font-normal text-ink-soft">— name, age, a short line. Included.</span></label>
           <input
             id="msg" className="field" maxLength={60} value={message}
@@ -150,15 +155,15 @@ export function OrderConfigurator(p: ConfiguratorProps) {
 
         {/* Add-ons */}
         <section aria-labelledby="cfg-addons">
-          <h2 id="cfg-addons" className="eyebrow text-cocoa-600">Add-ons</h2>
+          <h2 id="cfg-addons" className="eyebrow text-strawberry-deep">Add-ons</h2>
           <div className="mt-3 space-y-2">
             {p.addons.map(a => {
               const on = addonIds.includes(a.id);
               return (
                 <button
                   key={a.id}
-                  className="w-full text-left flex items-center justify-between gap-3 border border-line rounded-[3px] px-3.5 py-3 hover:bg-cream-100 transition-colors"
-                  style={on ? { borderColor: "var(--color-cocoa-700)", background: "var(--color-cream-100)" } : undefined}
+                  className="w-full text-left flex items-center justify-between gap-3 border border-line rounded-[16px] px-4 py-3.5 hover:border-strawberry/50 transition-colors"
+                  style={on ? { borderColor: "var(--color-strawberry)", background: "var(--color-strawberry-tint)" } : undefined}
                   onClick={() => setAddonIds(ids => (on ? ids.filter(i => i !== a.id) : [...ids, a.id]))}
                   aria-pressed={on}
                 >
@@ -175,7 +180,7 @@ export function OrderConfigurator(p: ConfiguratorProps) {
 
         {/* Date */}
         <section aria-labelledby="cfg-date">
-          <h2 id="cfg-date" className="eyebrow text-cocoa-600">Date</h2>
+          <h2 id="cfg-date" className="eyebrow text-strawberry-deep">Date</h2>
           <div className="mt-3 flex flex-wrap gap-2">
             {p.dates.slice(0, 12).map(d => {
               const disabled = d.state === "full" || d.state === "blocked";
@@ -202,7 +207,7 @@ export function OrderConfigurator(p: ConfiguratorProps) {
 
         {/* Fulfilment */}
         <section aria-labelledby="cfg-fulfil">
-          <h2 id="cfg-fulfil" className="eyebrow text-cocoa-600">Pickup or delivery</h2>
+          <h2 id="cfg-fulfil" className="eyebrow text-strawberry-deep">Pickup or delivery</h2>
           <div className="mt-3 grid grid-cols-2 gap-2.5 max-w-md">
             <button className="chip justify-center" aria-pressed={fulfilment === "pickup"} onClick={() => setFulfilment("pickup")}>
               Pickup — free
@@ -221,7 +226,7 @@ export function OrderConfigurator(p: ConfiguratorProps) {
         </section>
 
         <section className="border-t border-line pt-6">
-          <h2 className="eyebrow text-cocoa-600">Want to change the design itself?</h2>
+          <h2 className="eyebrow text-strawberry-deep">Want to change the design itself?</h2>
           <p className="mt-2 text-[0.95rem] text-ink-soft">
             Colours, toppers, themes — anything structural is a quoted change, not a checkbox.
           </p>
@@ -231,9 +236,27 @@ export function OrderConfigurator(p: ConfiguratorProps) {
         </section>
       </div>
 
+      {/* Coupon */}
+      <section aria-labelledby="cfg-coupon">
+        <h2 id="cfg-coupon" className="eyebrow text-strawberry-deep">Coupon</h2>
+        <div className="mt-3 flex gap-2 max-w-md">
+          <input
+            className="field num uppercase" placeholder="FESTIVE10"
+            value={couponInput} aria-label="Coupon code"
+            onChange={e => setCouponInput(e.target.value.toUpperCase())}
+          />
+          <button
+            className="btn btn-ghost whitespace-nowrap"
+            onClick={() => { setCouponCode(couponInput || undefined); setCouponMsg(null); }}
+            disabled={!couponInput}
+          >Apply</button>
+        </div>
+        {couponMsg && <p className="mt-1.5 text-[0.85rem] text-strawberry-deep" role="status">{couponMsg}</p>}
+      </section>
+
       {/* Summary column (desktop) — mobile users get the fixed bottom bar */}
       <aside className="hidden lg:block">
-        <div className="sticky top-[calc(var(--header-h)+1.5rem)] panel p-5">
+        <div className="sticky top-[calc(var(--header-h)+1.5rem)] panel p-6 rounded-[22px] shadow-[0_18px_44px_-24px_rgba(64,37,26,0.3)]">
           <h2 className="display-sm">Your cake</h2>
           <dl className="num mt-4 space-y-1.5 text-[0.92rem]">
             {quote.lines.map((l, i) => (
@@ -250,7 +273,7 @@ export function OrderConfigurator(p: ConfiguratorProps) {
             <span>Total</span>
             <span>{formatINR(quote.totalPaise)}</span>
           </div>
-          <button className="btn btn-gold w-full mt-4" disabled={!canContinue || busy} onClick={submit}>
+          <button className="btn btn-primary w-full mt-4" disabled={!canContinue || busy} onClick={submit}>
             {busy ? "Holding your date…" : date ? `Continue — ${formatINR(quote.totalPaise)}` : "Choose a date"}
           </button>
           <p className="mt-3 text-[0.78rem] text-ink-soft">Price locks when you continue. Pay by UPI — no bargaining, no surprises.</p>
@@ -264,7 +287,7 @@ export function OrderConfigurator(p: ConfiguratorProps) {
           <p className="num text-[1.05rem] font-medium leading-tight">{formatINR(quote.totalPaise)}</p>
           <p className="text-[0.75rem] text-ink-soft num">{p.designName} · {variant.label}{date ? ` · ${istDateLabel(date)}` : ""}</p>
         </div>
-        <button className="btn btn-gold" disabled={!canContinue || busy} onClick={submit}>
+        <button className="btn btn-primary" disabled={!canContinue || busy} onClick={submit}>
           {busy ? "Holding…" : date ? "Continue" : "Choose a date"}
         </button>
       </div>

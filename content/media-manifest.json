@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-09-19T22:20:52.126Z",
+  "generatedAt": "2026-09-20T00:01:12.472Z",
   "designs": {
     "cocoa-drip-crown": {
       "number": "01",
       "images": [
         {
           "photo": "photo-01",
-          "sha256_16": "d0d807b1fe45bbd1",
+          "sha256_16": "118b86c7a5a52e40",
           "width": 1200,
           "height": 1600,
           "role": "hero",
@@ -23,7 +23,7 @@
       "images": [
         {
           "photo": "photo-02",
-          "sha256_16": "485a946dd5b594f0",
+          "sha256_16": "e58cb160179873b5",
           "width": 681,
           "height": 1280,
           "role": "hero",
@@ -40,7 +40,7 @@
       "images": [
         {
           "photo": "photo-03",
-          "sha256_16": "83cc7510ced8a031",
+          "sha256_16": "5fc2261d3b516f1b",
           "width": 1200,
           "height": 1600,
           "role": "hero",
@@ -57,7 +57,7 @@
       "images": [
         {
           "photo": "photo-04",
-          "sha256_16": "708ac83ead68b819",
+          "sha256_16": "0e1dd56437e72a15",
           "width": 1200,
           "height": 1600,
           "role": "hero",
@@ -69,7 +69,7 @@
         },
         {
           "photo": "photo-11",
-          "sha256_16": "3b8e154cd8540582",
+          "sha256_16": "cacf0f2d3fbb057f",
           "width": 1200,
           "height": 1600,
           "role": "gallery",
@@ -86,7 +86,7 @@
       "images": [
         {
           "photo": "photo-05",
-          "sha256_16": "7d1af3216d26fe64",
+          "sha256_16": "cbe468eb76fb3e43",
           "width": 1346,
           "height": 1600,
           "role": "hero",
@@ -103,7 +103,7 @@
       "images": [
         {
           "photo": "photo-06",
-          "sha256_16": "d9fe09efd5ef7a37",
+          "sha256_16": "8fb5b955c4595e36",
           "width": 681,
           "height": 1280,
           "role": "hero",
@@ -120,7 +120,7 @@
       "images": [
         {
           "photo": "photo-07",
-          "sha256_16": "fa36364cc8d81956",
+          "sha256_16": "b3890cad5dd965f1",
           "width": 1346,
           "height": 1600,
           "role": "hero",
@@ -137,7 +137,7 @@
       "images": [
         {
           "photo": "photo-08",
-          "sha256_16": "85ddc6344ed28ed1",
+          "sha256_16": "0f199cc84aad01d6",
           "width": 899,
           "height": 1599,
           "role": "hero",
@@ -154,7 +154,7 @@
       "images": [
         {
           "photo": "photo-09",
-          "sha256_16": "a9ceb83074239fb6",
+          "sha256_16": "f7c6704b2f771837",
           "width": 1200,
           "height": 1600,
           "role": "hero",
@@ -171,7 +171,7 @@
       "images": [
         {
           "photo": "photo-10",
-          "sha256_16": "074ceaca9424fbfc",
+          "sha256_16": "064b8c5331427fce",
           "width": 1200,
           "height": 1600,
           "role": "hero",
@@ -188,7 +188,7 @@
       "images": [
         {
           "photo": "photo-12",
-          "sha256_16": "dd4a81afa957d12d",
+          "sha256_16": "4546b42f1842916a",
           "width": 1094,
           "height": 1600,
           "role": "hero",
@@ -205,7 +205,7 @@
       "images": [
         {
           "photo": "photo-13",
-          "sha256_16": "b8b186b4259f2839",
+          "sha256_16": "06cb11cd6a496d0d",
           "width": 899,
           "height": 1599,
           "role": "hero",
@@ -222,7 +222,7 @@
       "images": [
         {
           "photo": "photo-14",
-          "sha256_16": "a01f858e1b436899",
+          "sha256_16": "acb3be643f7272ef",
           "width": 899,
           "height": 1599,
           "role": "hero",
@@ -239,7 +239,7 @@
       "images": [
         {
           "photo": "photo-15",
-          "sha256_16": "fbc4005951d90c99",
+          "sha256_16": "3455d763644307b1",
           "width": 1200,
           "height": 1600,
           "role": "hero",
@@ -256,7 +256,7 @@
       "images": [
         {
           "photo": "photo-16",
-          "sha256_16": "102d8af14c4be8a2",
+          "sha256_16": "54e68c2a48a46ebf",
           "width": 898,
           "height": 1600,
           "role": "hero",
@@ -273,7 +273,7 @@
       "images": [
         {
           "photo": "photo-17",
-          "sha256_16": "8feb566928090874",
+          "sha256_16": "d27b39820ffb61b8",
           "width": 1200,
           "height": 1600,
           "role": "hero",
@@ -290,7 +290,7 @@
       "images": [
         {
           "photo": "photo-18",
-          "sha256_16": "f197ad1a55a4c113",
+          "sha256_16": "8a53c453254f1352",
           "width": 1205,
           "height": 1600,
           "role": "hero",
@@ -307,7 +307,7 @@
       "images": [
         {
           "photo": "photo-20",
-          "sha256_16": "9e41d3a9b0f3ba38",
+          "sha256_16": "c1948eba47512766",
           "width": 720,
           "height": 1280,
           "role": "hero",
@@ -319,7 +319,7 @@
         },
         {
           "photo": "photo-19",
-          "sha256_16": "cf89eb81dcf02699",
+          "sha256_16": "0a9301c91921e04e",
           "width": 2340,
           "height": 4160,
           "role": "gallery",
@@ -336,7 +336,7 @@
       "images": [
         {
           "photo": "photo-22",
-          "sha256_16": "90775c786882d84d",
+          "sha256_16": "4224630e5193c013",
           "width": 3000,
           "height": 4000,
           "role": "hero",
@@ -348,7 +348,7 @@
         },
         {
           "photo": "photo-25",
-          "sha256_16": "dc63d5f6e1b82592",
+          "sha256_16": "130e03a2d3fbcf67",
           "width": 3000,
           "height": 4000,
           "role": "gallery",
@@ -360,7 +360,7 @@
         },
         {
           "photo": "photo-24",
-          "sha256_16": "85b35ae3fe133b6b",
+          "sha256_16": "72b8a5cab6bdc691",
           "width": 3000,
           "height": 4000,
           "role": "gallery",
@@ -372,7 +372,7 @@
         },
         {
           "photo": "photo-21",
-          "sha256_16": "21fd4a5bc62769b0",
+          "sha256_16": "f16f70c76f40cd1d",
           "width": 3000,
           "height": 4000,
           "role": "gallery",
@@ -384,7 +384,7 @@
         },
         {
           "photo": "photo-23",
-          "sha256_16": "d2bed7cc72d8105e",
+          "sha256_16": "f2e82671ee7586a3",
           "width": 3000,
           "height": 4000,
           "role": "gallery",
@@ -401,7 +401,7 @@
       "images": [
         {
           "photo": "photo-28",
-          "sha256_16": "0fa74a17a5041b6c",
+          "sha256_16": "ca50334bd244a9ec",
           "width": 3000,
           "height": 4000,
           "role": "hero",
@@ -413,7 +413,7 @@
         },
         {
           "photo": "photo-27",
-          "sha256_16": "54a396431dcb33ac",
+          "sha256_16": "bd57f9b1166f8615",
           "width": 3000,
           "height": 4000,
           "role": "gallery",
@@ -425,7 +425,7 @@
         },
         {
           "photo": "photo-29",
-          "sha256_16": "cf33fd68933ac135",
+          "sha256_16": "611fe7e11e70986c",
           "width": 3000,
           "height": 4000,
           "role": "gallery",
@@ -437,7 +437,7 @@
         },
         {
           "photo": "photo-30",
-          "sha256_16": "a4eb5a8a9005bbfd",
+          "sha256_16": "a1686c0bebc76eb6",
           "width": 3000,
           "height": 4000,
           "role": "gallery",
@@ -449,7 +449,7 @@
         },
         {
           "photo": "photo-26",
-          "sha256_16": "e54b8e237f297977",
+          "sha256_16": "102e8a0129a07374",
           "width": 3000,
           "height": 4000,
           "role": "gallery",

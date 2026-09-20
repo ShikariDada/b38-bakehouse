@@ -1,0 +1,41 @@
+/* Self-hosted fonts: Fraunces (display, SOFT axis), Satoshi (UI), Caveat (handwritten accents). SIL OFL / ITF FFL. */
+
+@font-face {
+  font-family: "Fraunces";
+  src: url("/fonts-v2/fraunces-normal.woff2") format("woff2");
+  font-weight: 100 900;
+  font-stretch: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Fraunces";
+  src: url("/fonts-v2/fraunces-italic.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts-v2/satoshi-0-TTX2.woff2") format("woff2");
+  font-weight: 400; font-display: swap;
+}
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts-v2/satoshi-1-P2LQ.woff2") format("woff2");
+  font-weight: 500; font-display: swap;
+}
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts-v2/satoshi-2-LAFF.woff2") format("woff2");
+  font-weight: 700; font-display: swap;
+}
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts-v2/satoshi-3-NHPG.woff2") format("woff2");
+  font-weight: 900; font-display: swap;
+}
+@font-face {
+  font-family: "Caveat";
+  src: url("/fonts-v2/caveat.woff2") format("woff2");
+  font-weight: 400 700; font-display: swap;
+}
