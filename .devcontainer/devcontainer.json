@@ -2,9 +2,8 @@
   "name": "B38 Bake House",
   "image": "mcr.microsoft.com/devcontainers/typescript-node:22",
   "postCreateCommand": "npm install --no-audit --no-fund && node scripts/seed.mjs && npm run build",
-  "forwardPorts": [
-    3000
-  ],
+  "postStartCommand": "cd /workspaces/b38-bakehouse && (nohup npx next start -p 3000 > server.log 2>&1 &) && sleep 4 && curl -s -o /dev/null -w 'server up: %{http_code}\\n' http://localhost:3000/",
+  "forwardPorts": [3000],
   "portsAttributes": {
     "3000": {
       "label": "B38 site",
