@@ -71,6 +71,14 @@ export default function Home() {
                 <p className="display text-[1.15rem] leading-tight">{hero.name}</p>
                 <p className="num text-[0.85rem] text-ink-soft">from {formatINR(heroFrom)} · eggless +{formatINR(5000)}</p>
               </div>
+              <div className="absolute -top-6 -right-2 sm:-right-6 w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-strawberry text-cream flex items-center justify-center text-center rotate-[8deg] shadow-lg">
+                <span className="text-[0.62rem] font-black uppercase tracking-[0.08em] leading-tight px-2">baked<br />after you<br />order</span>
+              </div>
+              <div className="absolute -bottom-10 -right-4 sm:-right-10 w-28 sm:w-36 rotate-[4deg] hidden min-[480px]:block">
+                <div className="relative overflow-hidden rounded-[18px] border-4 border-cream shadow-[0_16px_36px_-16px_rgba(64,37,26,0.45)]" style={{ aspectRatio: '1' }}>
+                  <Image src={designs.find(d => d.slug === 'midnight-oreo-gold')!.images[0].cardSm} alt="Midnight Oreo and gold cake" fill sizes="140px" className="object-cover" />
+                </div>
+              </div>
             </div>
           </div>
         </div>
